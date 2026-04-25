@@ -3,189 +3,377 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Config</title>
-
-  <!-- Police aesthetic -->
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+  <title>vitality87x</title>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
       min-height: 100vh;
-      background: #050505;
-      color: white;
-      font-family: 'Rajdhani', sans-serif;
+      background:
+        radial-gradient(circle at center, rgba(255,255,255,0.07), transparent 35%),
+        linear-gradient(rgba(0,0,0,.78), rgba(0,0,0,.92)),
+        url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      color: #111;
+      font-family: 'VT323', monospace;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size: 100% 4px;
+      pointer-events: none;
+      z-index: 99;
+    }
+
+    .page {
+      min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      overflow: hidden;
+      padding: 35px 15px;
     }
 
-    /* Fond animé */
-    .background {
-      position: fixed;
-      inset: 0;
+    .site {
+      width: 880px;
+      max-width: 96vw;
+      background: #d8d8d8;
+      border: 4px solid #eee;
+      outline: 3px solid #111;
+      box-shadow: 0 0 25px rgba(255,255,255,.65), 0 0 45px rgba(80,80,80,.5);
+      padding: 10px;
+      position: relative;
+    }
+
+    .site::after {
+      content: "";
+      position: absolute;
+      inset: 6px;
+      border: 1px dashed rgba(0,0,0,.35);
+      pointer-events: none;
+    }
+
+    .header {
+      height: 165px;
+      border: 3px solid #111;
       background:
-        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.85)),
-        url("https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?auto=format&fit=crop&w=1600&q=80");
+        linear-gradient(90deg, rgba(0,0,0,.15), rgba(0,0,0,.85)),
+        url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
       background-size: cover;
       background-position: center;
-      animation: zoom 16s infinite alternate ease-in-out;
-      z-index: -3;
-    }
-
-    .glow {
-      position: fixed;
-      width: 450px;
-      height: 450px;
-      background: rgba(255, 0, 60, 0.22);
-      filter: blur(90px);
-      border-radius: 50%;
-      animation: moveGlow 8s infinite alternate ease-in-out;
-      z-index: -2;
-    }
-
-    .particles {
-      position: fixed;
-      inset: 0;
-      background-image: radial-gradient(rgba(255,255,255,0.18) 1px, transparent 1px);
-      background-size: 35px 35px;
-      animation: particles 12s linear infinite;
-      opacity: 0.25;
-      z-index: -1;
-    }
-
-    @keyframes zoom {
-      from { transform: scale(1); }
-      to { transform: scale(1.08); }
-    }
-
-    @keyframes moveGlow {
-      from { transform: translate(-180px, -120px); }
-      to { transform: translate(220px, 160px); }
-    }
-
-    @keyframes particles {
-      from { transform: translateY(0); }
-      to { transform: translateY(35px); }
-    }
-
-    .card {
-      width: 90%;
-      max-width: 520px;
-      padding: 35px;
-      border-radius: 24px;
-      background: rgba(10, 10, 10, 0.72);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 0 35px rgba(255, 0, 60, 0.22);
-      text-align: center;
-    }
-
-    h1 {
-      font-family: 'Orbitron', sans-serif;
-      font-size: 2.6rem;
-      letter-spacing: 3px;
-      color: #ffffff;
-      text-shadow: 0 0 12px rgba(255, 0, 60, 0.9);
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      overflow: hidden;
       margin-bottom: 8px;
     }
 
-    .subtitle {
-      color: #bbbbbb;
-      margin-bottom: 28px;
-      letter-spacing: 2px;
-      font-size: 1rem;
-    }
-
-    .config {
-      text-align: left;
-      display: grid;
-      gap: 12px;
-      margin-bottom: 28px;
-    }
-
-    .item {
-      padding: 13px 16px;
-      border-radius: 14px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.08);
-      font-size: 1.1rem;
-    }
-
-    .item span {
-      color: #ff2f5f;
-      font-weight: 700;
-      margin-right: 6px;
-    }
-
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    .icon-link {
-      width: 52px;
-      height: 52px;
-      border-radius: 16px;
+    .pfp {
+      background: rgba(255,255,255,.08);
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: white;
-      font-size: 1.6rem;
-      text-decoration: none;
-      transition: 0.25s;
+      border-right: 3px solid #111;
     }
 
-    .icon-link:hover {
-      transform: translateY(-4px) scale(1.06);
-      box-shadow: 0 0 20px rgba(255, 0, 60, 0.65);
-      background: rgba(255, 0, 60, 0.22);
+    .pfp-box {
+      width: 150px;
+      height: 125px;
+      border: 3px double #fff;
+      background: #050505;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-align: center;
+      text-shadow: 0 0 8px #fff;
+    }
+
+    .title-area {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      text-shadow: 3px 3px 0 #000, 0 0 12px #fff;
+    }
+
+    h1 {
+      font-family: 'Special Elite', serif;
+      font-size: clamp(38px, 8vw, 72px);
+      letter-spacing: 3px;
+    }
+
+    .status-bar {
+      border: 2px solid #111;
+      background: #111;
+      color: #eee;
+      font-size: 20px;
+      padding: 3px 10px;
+      margin-bottom: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .content {
+      display: grid;
+      grid-template-columns: 175px 1fr 185px;
+      gap: 8px;
+    }
+
+    .box {
+      border: 3px solid #111;
+      background: #f1f1f1;
+      padding: 8px;
+      box-shadow: inset 0 0 0 2px rgba(0,0,0,.12);
+    }
+
+    .box.dark {
+      background: #1b1b1b;
+      color: white;
+    }
+
+    .box-title {
+      background: #111;
+      color: white;
+      padding: 3px 8px;
+      font-family: 'Special Elite', serif;
+      font-size: 18px;
+      margin-bottom: 7px;
+      text-align: center;
+      border: 1px solid white;
+    }
+
+    .nav a {
+      display: block;
+      color: #111;
+      text-decoration: none;
+      font-size: 23px;
+      padding: 4px 2px;
+      border-bottom: 1px dashed #999;
+    }
+
+    .nav a:hover {
+      background: #111;
+      color: white;
+      padding-left: 8px;
+    }
+
+    .main-title {
+      font-size: 48px;
+      text-align: center;
+      letter-spacing: 4px;
+      margin-bottom: 8px;
+      background: #c9c9c9;
+      border: 2px solid #333;
+    }
+
+    .bio {
+      display: grid;
+      grid-template-columns: 105px 1fr;
+      gap: 10px;
+      font-size: 24px;
+      line-height: .95;
+      margin-bottom: 10px;
+    }
+
+    .avatar {
+      height: 105px;
+      border: 3px solid #111;
+      background: #111;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      text-align: center;
+    }
+
+    .note {
+      background: white;
+      border: 3px solid #111;
+      padding: 13px;
+      font-size: 25px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .setup-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6px;
+    }
+
+    .setup-item {
+      background: #ddd;
+      border: 2px solid #111;
+      padding: 6px;
+      font-size: 20px;
+      line-height: .95;
+    }
+
+    .setup-item span {
+      font-weight: bold;
+      background: #111;
+      color: white;
+      padding: 0 5px;
+      margin-right: 4px;
+    }
+
+    .side-img {
+      height: 95px;
+      border: 2px solid #111;
+      background: #111;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-size: 20px;
+      margin-bottom: 8px;
+    }
+
+    .todo li {
+      list-style: square;
+      margin-left: 18px;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+
+    .discord {
+      display: block;
+      text-align: center;
+      background: #111;
+      color: white;
+      border: 2px solid #777;
+      text-decoration: none;
+      padding: 8px;
+      font-size: 25px;
+      margin-top: 8px;
+    }
+
+    .discord:hover {
+      background: white;
+      color: #111;
     }
 
     .footer {
-      margin-top: 22px;
-      color: #777;
-      font-size: 0.9rem;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .stamp {
+      border: 2px solid #111;
+      background: #111;
+      color: white;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      text-align: center;
+    }
+
+    @media (max-width: 850px) {
+      .content { grid-template-columns: 1fr; }
+      .header { grid-template-columns: 1fr; height: auto; }
+      .pfp { display: none; }
+      .title-area { padding: 35px 10px; }
+      .setup-grid { grid-template-columns: 1fr; }
+      .footer { grid-template-columns: repeat(2, 1fr); }
     }
   </style>
 </head>
 <body>
-  <div class="background"></div>
-  <div class="glow"></div>
-  <div class="particles"></div>
+  <div class="page">
+    <div class="site">
+      <header class="header">
+        <div class="pfp">
+          <div class="pfp-box">CS2<br>RP<br>SETUP</div>
+        </div>
+        <div class="title-area">
+          <h1>vitality87x</h1>
+          <p style="font-size:26px;">old web / edgy setup page</p>
+        </div>
+      </header>
 
-  <main class="card">
-    <h1>MY CONFIG</h1>
-    <p class="subtitle">dark setup / aesthetic profile</p>
+      <div class="status-bar">✦ welcome to my current setup ✦ vitality fan ✦ cs2 / fivem / gta rp ✦</div>
 
-    <section class="config">
-      <div class="item"><span>CASE:</span> MSI MAG PANO M100R PZ BLACK</div>
-      <div class="item"><span>CPU:</span> AMD RYZEN 7 5700X</div>
-      <div class="item"><span>GPU:</span> RTX 5060 TI 8GB (TRIPLE FAN)</div>
-      <div class="item"><span>MOTHERBOARD:</span> ASUS PRIME B550M-K</div>
-      <div class="item"><span>RAM:</span> 16GB DDR4 3200MHz (DUAL CHANNEL)</div>
-      <div class="item"><span>PSU:</span> MSI MAG A650BN 650W 80+ BRONZE</div>
-      <div class="item"><span>SSD:</span> 1TB NVME (KINGSTON)</div>
-      <div class="item"><span>NETWORK:</span> 2.5G ETHERNET PCIe</div>
-      <div class="item"><span>COOLING:</span> ARCTIC LIQUID FREEZER III 360</div>
-      <div class="item"><span>FANS:</span> RGB CASE FANS</div>
-    </section>
+      <main class="content">
+        <aside class="box nav">
+          <div class="box-title">ABOUT ANGEL</div>
+          <a href="#home">☠ HOME</a>
+          <a href="#about">☠ ABOUT</a>
+          <a href="#setup">☠ SETUP</a>
+          <a href="#games">☠ GAMES</a>
+          <a href="#discord">☠ DISCORD</a>
 
-    <div class="links">
-      <!-- Remplace ce lien par ton vrai lien Discord -->
-      <a class="icon-link" href="https://discord.com/users/TON_ID_DISCORD" target="_blank" title="Discord">💬</a>
+          <div class="box-title" style="margin-top:10px;">WEB SHIT</div>
+          <a href="#">✦ CS2</a>
+          <a href="#">✦ FIVEM</a>
+          <a href="#">✦ VITALITY</a>
+        </aside>
+
+        <section class="box" id="home">
+          <div class="main-title">PR3P4R3 4 SETUP</div>
+
+          <div class="bio" id="about">
+            <div class="avatar">VITALITY<br>87X</div>
+            <p>
+              hii, i'm 16. i'm a fan of cs2 esport and my favorite team is vitality.
+              i play games like cs2, gta rp / fivem and a lot of other games.
+              this page shows my current pc config.
+            </p>
+          </div>
+
+          <div class="note">6.10.2025 ✦ website now online ✦</div>
+
+          <div class="setup-grid" id="setup">
+            <div class="setup-item"><span>CASE</span> MSI MAG PANO M100R PZ BLACK</div>
+            <div class="setup-item"><span>CPU</span> AMD RYZEN 7 5700X</div>
+            <div class="setup-item"><span>GPU</span> RTX 5060 TI 8GB TRIPLE FAN</div>
+            <div class="setup-item"><span>MB</span> B550 AORUS ELITE V2</div>
+            <div class="setup-item"><span>RAM</span> 16GB DDR4 3200MHz DUAL CHANNEL</div>
+            <div class="setup-item"><span>PSU</span> MSI MAG A650BN 650W 80+ BRONZE</div>
+            <div class="setup-item"><span>SSD</span> 1TB NVME KINGSTON</div>
+            <div class="setup-item"><span>NET</span> 2.5G ETHERNET PCIe</div>
+            <div class="setup-item"><span>AIO</span> ARCTIC LIQUID FREEZER III 360</div>
+            <div class="setup-item"><span>FANS</span> RGB CASE FANS</div>
+          </div>
+        </section>
+
+        <aside class="box">
+          <div class="side-img">WEBRING<br>COMING SOON</div>
+          <div class="box-title">TODO LIST</div>
+          <ul class="todo">
+            <li>finish whole site</li>
+            <li>add better background</li>
+            <li>add discord link</li>
+            <li>update setup later</li>
+          </ul>
+
+          <a class="discord" href="https://discord.com/users/1144323607170912307" target="_blank">☁ discord: vitality87x</a>
+        </aside>
+      </main>
+
+      <footer class="footer">
+        <div class="stamp">CS2</div>
+        <div class="stamp">VITALITY</div>
+        <div class="stamp">FIVEM</div>
+        <div class="stamp">GTA RP</div>
+        <div class="stamp">SETUP</div>
+        <div class="stamp">OLD WEB</div>
+        <div class="stamp">87X</div>
+      </footer>
     </div>
-
-    <p class="footer">made for guns.lol</p>
-  </main>
+  </div>
 </body>
 </html>
