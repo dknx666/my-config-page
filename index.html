@@ -8,111 +8,271 @@
 <link href="https://fonts.googleapis.com/css2?family=VT323&family=Special+Elite&display=swap" rel="stylesheet">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth;}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
 background:
-radial-gradient(circle,rgba(255,255,255,0.07),transparent),
-linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.95)),
-url("https://images.unsplash.com/photo-1519608487953-e999c86e7455");
+linear-gradient(rgba(0,0,0,.75),rgba(0,0,0,.95)),
+url("https://images.unsplash.com/photo-1519608487953-e999c86e7455?auto=format&fit=crop&w=1600&q=80");
 background-size:cover;
+background-position:center;
 font-family:'VT323',monospace;
+color:#111;
+}
+
+body::before{
+content:"";
+position:fixed;
+inset:0;
+background-image:linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px);
+background-size:100% 4px;
+pointer-events:none;
+z-index:99;
 }
 
 .site{
 width:900px;
-margin:auto;
-margin-top:40px;
+max-width:96vw;
+margin:40px auto;
 background:#d8d8d8;
-border:4px solid white;
-outline:3px solid black;
+border:4px solid #eee;
+outline:3px solid #111;
+box-shadow:0 0 25px white;
 padding:10px;
 }
 
 .header{
+height:165px;
+border:3px solid #111;
+background:
+linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.85)),
+url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80");
+background-size:cover;
 display:grid;
-grid-template-columns:200px 1fr;
-height:150px;
-background:black;
-color:white;
-margin-bottom:10px;
+grid-template-columns:230px 1fr;
+margin-bottom:8px;
+}
+
+.pfp{
+display:flex;
+align-items:center;
+justify-content:center;
+border-right:3px solid #111;
 }
 
 .pfp-box{
+width:150px;
+height:125px;
+border:3px double white;
+background:#050505;
+color:white;
 display:flex;
 align-items:center;
 justify-content:center;
-border-right:3px solid white;
 font-size:30px;
+text-align:center;
+text-shadow:0 0 8px white;
 }
 
-.title{
+.title-area{
 display:flex;
-flex-direction:column;
-justify-content:center;
 align-items:center;
+justify-content:center;
+flex-direction:column;
+color:white;
+text-shadow:3px 3px 0 black,0 0 12px white;
 }
 
 h1{
-font-family:'Special Elite';
-font-size:60px;
+font-family:'Special Elite',serif;
+font-size:70px;
+}
+
+.status-bar{
+border:2px solid #111;
+background:#111;
+color:white;
+font-size:20px;
+padding:4px 10px;
+margin-bottom:8px;
 }
 
 .content{
 display:grid;
-grid-template-columns:180px 1fr 180px;
+grid-template-columns:180px 1fr 190px;
 gap:8px;
 }
 
 .box{
-border:3px solid black;
-background:#eee;
+border:3px solid #111;
+background:#f1f1f1;
 padding:8px;
 }
 
-.nav a{
-display:block;
-text-decoration:none;
-color:black;
-padding:5px;
-font-size:22px;
-border-bottom:1px dashed gray;
-}
-
-.nav a:hover{
-background:black;
+.box-title{
+background:#111;
 color:white;
+padding:3px 8px;
+font-family:'Special Elite',serif;
+font-size:18px;
+margin-bottom:7px;
+text-align:center;
+border:1px solid white;
 }
 
-.section{
-margin-bottom:10px;
-border:2px solid black;
-padding:10px;
+.nav button, .nav a{
+display:block;
+width:100%;
+background:none;
+border:none;
+color:#111;
+text-align:left;
+text-decoration:none;
+font-family:'VT323',monospace;
+font-size:23px;
+padding:5px 4px;
+border-bottom:1px dashed #999;
+cursor:pointer;
+}
+
+.nav button:hover, .nav a:hover{
+background:#111;
+color:white;
+padding-left:10px;
+}
+
+.page-section{
+display:none;
+border:2px solid #111;
 background:#ddd;
+padding:10px;
+min-height:480px;
+}
+
+.page-section.active{
+display:block;
+}
+
+.main-title{
+font-size:48px;
+text-align:center;
+letter-spacing:4px;
+margin-bottom:12px;
+background:#c9c9c9;
+border:2px solid #333;
+}
+
+.note{
+background:white;
+border:3px solid #111;
+padding:13px;
+font-size:25px;
+text-align:center;
+margin-bottom:10px;
+}
+
+.bio{
+display:grid;
+grid-template-columns:110px 1fr;
+gap:10px;
+font-size:25px;
+line-height:1;
+}
+
+.avatar{
+height:110px;
+border:3px solid #111;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
 }
 
 .setup-grid{
 display:grid;
 grid-template-columns:1fr 1fr;
-gap:5px;
+gap:6px;
 }
 
 .setup-item{
-background:white;
-border:2px solid black;
-padding:5px;
+background:#eee;
+border:2px solid #111;
+padding:7px;
+font-size:21px;
+}
+
+.setup-item span{
+background:#111;
+color:white;
+padding:0 5px;
+margin-right:4px;
+}
+
+.side-img{
+height:95px;
+border:2px solid #111;
+background:#111;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-size:20px;
+margin-bottom:8px;
+}
+
+.todo li{
+margin-left:18px;
+font-size:22px;
+margin-bottom:5px;
 }
 
 .discord{
 display:block;
 text-align:center;
-background:black;
+background:#111;
 color:white;
-padding:8px;
-margin-top:10px;
+border:2px solid #777;
 text-decoration:none;
+padding:8px;
+font-size:25px;
+margin-top:8px;
 }
 
+.discord:hover{
+background:white;
+color:#111;
+}
+
+.footer{
+display:grid;
+grid-template-columns:repeat(7,1fr);
+gap:6px;
+margin-top:8px;
+}
+
+.stamp{
+border:2px solid #111;
+background:#111;
+color:white;
+height:42px;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:16px;
+text-align:center;
+}
+
+@media(max-width:850px){
+.content{grid-template-columns:1fr;}
+.header{grid-template-columns:1fr;height:auto;}
+.pfp{display:none;}
+.title-area{padding:35px 10px;}
+.setup-grid{grid-template-columns:1fr;}
+.footer{grid-template-columns:repeat(2,1fr);}
+}
 </style>
 </head>
 
@@ -120,81 +280,134 @@ text-decoration:none;
 
 <div class="site">
 
-<div class="header" id="home">
-<div class="pfp-box">CS2<br>RP</div>
-<div class="title">
+<header class="header">
+<div class="pfp">
+<div class="pfp-box">CS2<br>RP<br>SETUP</div>
+</div>
+<div class="title-area">
 <h1>vitality87x</h1>
-<p>old web setup page</p>
+<p style="font-size:26px;">old web / edgy setup page</p>
+</div>
+</header>
+
+<div class="status-bar">✦ welcome to my current setup ✦ vitality fan ✦ cs2 / fivem / gta rp ✦</div>
+
+<main class="content">
+
+<aside class="box nav">
+<div class="box-title">ABOUT ANGEL</div>
+
+<button onclick="showPage('home')">☠ HOME</button>
+<button onclick="showPage('about')">☠ ABOUT</button>
+<button onclick="showPage('setup')">☠ SETUP</button>
+<button onclick="showPage('games')">☠ GAMES</button>
+<button onclick="showPage('discord')">☠ DISCORD</button>
+
+<div class="box-title" style="margin-top:10px;">WEB SHIT</div>
+<a href="https://www.hltv.org/" target="_blank">✦ CS2</a>
+<a href="javascript:void(0)">✦ FIVEM</a>
+<a href="https://vitality.gg/" target="_blank">✦ VITALITY</a>
+</aside>
+
+<section class="box">
+
+<div id="home" class="page-section active">
+<div class="main-title">HOME</div>
+<div class="note">
+welcome to my website.<br><br>
+this site is made to show who i am, what games i play, and my current pc setup.
 </div>
 </div>
 
-<div class="content">
-
-<!-- MENU -->
-<div class="box nav">
-<a href="#home">HOME</a>
-<a href="#about">ABOUT</a>
-<a href="#setup">SETUP</a>
-<a href="#games">GAMES</a>
-
-<br>
-
-<a href="https://www.hltv.org/" target="_blank">CS2</a>
-<a href="javascript:void(0)">FIVEM</a>
-<a href="https://vitality.gg/" target="_blank">VITALITY</a>
+<div id="about" class="page-section">
+<div class="main-title">ABOUT ME</div>
+<div class="bio">
+<div class="avatar">VITALITY<br>87X</div>
+<p>
+hi, i'm 16. i'm a fan of CS2 esport and my favorite team is Team Vitality.
+i play games like CS2, GTA RP / FiveM and a lot of other games.
+</p>
+</div>
 </div>
 
-<!-- MAIN -->
-<div class="box">
-
-<div class="section">
-<h2>HOME</h2>
-<p>this site shows my setup and what i play</p>
-</div>
-
-<div class="section" id="about">
-<h2>ABOUT</h2>
-<p>i'm 16, cs2 esport fan, vitality supporter. i play cs2, gta rp / fivem and more.</p>
-</div>
-
-<div class="section" id="setup">
-<h2>SETUP</h2>
-
+<div id="setup" class="page-section">
+<div class="main-title">MY SETUP</div>
 <div class="setup-grid">
-<div class="setup-item">CPU: RYZEN 7 5700X</div>
-<div class="setup-item">GPU: RTX 5060 TI</div>
-<div class="setup-item">MB: B550 AORUS ELITE V2</div>
-<div class="setup-item">RAM: 16GB</div>
-<div class="setup-item">SSD: 1TB NVME</div>
-<div class="setup-item">PSU: 650W</div>
+<div class="setup-item"><span>CASE</span> MSI MAG PANO M100R PZ BLACK</div>
+<div class="setup-item"><span>CPU</span> AMD RYZEN 7 5700X</div>
+<div class="setup-item"><span>GPU</span> RTX 5060 TI 8GB TRIPLE FAN</div>
+<div class="setup-item"><span>MB</span> B550 AORUS ELITE V2</div>
+<div class="setup-item"><span>RAM</span> 16GB DDR4 3200MHz DUAL CHANNEL</div>
+<div class="setup-item"><span>PSU</span> MSI MAG A650BN 650W 80+ BRONZE</div>
+<div class="setup-item"><span>SSD</span> 1TB NVME KINGSTON</div>
+<div class="setup-item"><span>NET</span> 2.5G ETHERNET PCIe</div>
+<div class="setup-item"><span>AIO</span> ARCTIC LIQUID FREEZER III 360</div>
+<div class="setup-item"><span>FANS</span> RGB CASE FANS</div>
+</div>
 </div>
 
+<div id="games" class="page-section">
+<div class="main-title">GAMES</div>
+<div class="note">
+games i play:<br><br>
+✦ Counter-Strike 2<br>
+✦ GTA RP / FiveM<br>
+✦ other games
+</div>
 </div>
 
-<div class="section" id="games">
-<h2>GAMES</h2>
-<p>CS2, GTA RP / FIVEM, others</p>
+<div id="discord" class="page-section">
+<div class="main-title">DISCORD</div>
+<div class="note">
+you can add me on discord:<br><br>
+<b>vitality87x</b>
+<br><br>
+<a class="discord" href="https://discord.com/users/1144323607170912307" target="_blank">
+☁ open my discord
+</a>
+</div>
 </div>
 
-</div>
+</section>
 
-<!-- RIGHT -->
-<div class="box">
-<p>TODO:</p>
-<ul>
+<aside class="box">
+<div class="side-img">WEBRING<br>COMING SOON</div>
+
+<div class="box-title">TODO LIST</div>
+<ul class="todo">
+<li>improve aim</li>
 <li>play more cs2</li>
-<li>upgrade setup</li>
+<li>update setup later</li>
+<li>add better background</li>
 </ul>
 
+<div class="box-title" style="margin-top:10px;">CONTACT</div>
 <a class="discord" href="https://discord.com/users/1144323607170912307" target="_blank">
-discord: vitality87x
+☁ discord: vitality87x
 </a>
+</aside>
+
+</main>
+
+<footer class="footer">
+<div class="stamp">CS2</div>
+<div class="stamp">VITALITY</div>
+<div class="stamp">FIVEM</div>
+<div class="stamp">GTA RP</div>
+<div class="stamp">SETUP</div>
+<div class="stamp">OLD WEB</div>
+<div class="stamp">87X</div>
+</footer>
 
 </div>
 
-</div>
-
-</div>
+<script>
+function showPage(pageId){
+  const pages = document.querySelectorAll('.page-section');
+  pages.forEach(page => page.classList.remove('active'));
+  document.getElementById(pageId).classList.add('active');
+}
+</script>
 
 </body>
 </html>
